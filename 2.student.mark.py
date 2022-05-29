@@ -1,85 +1,176 @@
-# PhamHungAnhBI11-031
-class Student:
-    # Constructor
-    def __init__(self, name, course, m1, id):
-        self.name = name
-        self.course = course
-        self.m1 = m1
-        self.id = id
+import os
+import platform
 
-    # Function to create and append new student
-    def accept(self, Name, course, marks1, id):
-        # use ' int(input()) ' method to take input from user
-        ob = Student(Name, course, marks1, id)
-        ls.append(ob)
+global listStd #Making ListStd As Super Global Variable
+listStd = ["yugesh", "kishor", "gajen", "Gopi"] #List Of Students
 
-    # Function to display student details
-    def display(self, ob):
-        print("Name : ", ob.name)
-        print("Course : ", ob.course)
-        print("Marks1 : ", ob.m1)
-        print("Id : ", ob.id)
-        print("\n")
+def manageStudent(): #Function For The Student Management System
 
-    # Search Function
-    def search(self, cr):
-        for i in range(ls.__len__()):
-            if (ls[i].course == cr):
-                return i
+	x = "#" * 30
+	y = "=" * 28
+	global bye #Making Bye As Super Global Variable
+	bye = "\n {}\n# {} #\n# ===> Brought To You By <===  #\n# ===> code-projects.org <===  #\n# {} #\n {}".format(x, y, y, x) # Will Print GoodBye Message
 
-    # Delete Function
-    def delete(self, cr):
-        i = obj.search(cr)
-        del ls[i]
+	#Printing Welcome Message And options For This Program
+	print(""" 
 
-    # Update Function
-    def update(self, cr, No):
-        i = obj.search(cr)
-        course = No
-        ls[i].course = course;
+  ------------------------------------------------------
+ |======================================================| 
+ |======== Welcome To Student Management System	========|
+ |======================================================|
+  ------------------------------------------------------
 
+Enter 1 : To View Student's List 
+Enter 2 : To Add New Student 
+Enter 3 : To Search Student 
+Enter 4 : To Remove Student 
+		
+		""")
 
-# Create a list to add Students
-ls = []
-# an object of Student class
-obj = Student('', 0, 0, 0)
+	try: #Using Exceptions For Validation
+		userInput = int(input("Please Select An Above Option: ")) #Will Take Input From User
+	except ValueError:
+		exit("\nHy! That's Not A Number") #Error Message
+	else:
+		print("\n") #Print New Line
 
-print("Hello, Teacher ")
-print("There are 3 students in small class")
-print("Course 1 : Math")
-print("Course 2 : PE")
-print("Course 3 : Physics")
+	#Checking Using Option	
+	if(userInput == 1): #This Option Will Print List Of Students
+		print("List Students\n")  
+		for students in listStd:
+			print("=> {}".format(students))
 
-# ch = int(input("Enter choice:"))
-# if(ch == 1):
-obj.accept("A", 1, 100, 100)
-obj.accept("B", 2, 90, 90)
-obj.accept("C", 3, 80, 80)
+	elif(userInput == 2): #This Option Will Add New Student In The List
+		newStd = input("Enter New Student: ")
+		if(newStd in listStd): #This Condition Checking The New Student Is Already In List Ur Not
+			print("\nThis Student {} Already In The Database".format(newStd))  #Error Message
+		else:	
+			listStd.append(newStd)
+			print("\n=> New Student {} Successfully Add \n".format(newStd))
+			for students in listStd:
+				print("=> {}".format(students))	
 
-# elif(ch == 2):
-print("\n")
-print("\nList of Students\n")
-for i in range(ls.__len__()):
-    obj.display(ls[i])
+	elif(userInput == 3): #This Option Will Search Student From The List
+		srcStd = input("Enter Student Name To Search: ")
+		if(srcStd in listStd): #This Condition Searching The Student
+			print("\n=> Record Found Of Student {}".format(srcStd))
+		else:
+			print("\n=> No Record Found Of Student {}".format(srcStd)) #Error Message
 
-# elif(ch == 3):
-print("\n Student Found, ")
-s = obj.search(2)
-obj.display(ls[s])
+	elif(userInput == 4): #This Option Will Remove Student From The List
+		rmStd = input("Enter Student Name To Remove: ")
+		if(rmStd in listStd): #This Condition Removing The Student From The List 
+			listStd.remove(rmStd)
+			print("\n=> Student {} Successfully Deleted \n".format(rmStd))
+			for students in listStd:
+				print("=> {}".format(students))
+		else:
+			print("\n=> No Record Found of This Student {}".format(rmStd)) #Error Message
+	 
+	elif(userInput < 1 or userInput > 4): #Validating User Option
+		print("Please Enter Valid Option")	#Error Message	
+						
+#brought to you by code-projects.org
+manageStudent()
 
-# elif(ch == 4):
-obj.delete(2)
-print(ls.__len__())
-print("List after deletion")
-for i in range(ls.__len__()):
-    obj.display(ls[i])
+def runAgain(): #Making Runable Problem1353
+	runAgn = input("\nwant To Run Again Y/n: ")
+	if(runAgn.lower() == 'y'):
+		if(platform.system() == "Windows"): #Checking User OS For Clearing The Screen
+			print(os.system('cls')) 
+		else:
+			print(os.system('clear'))
+		manageStudent()
+		runAgain()
+	else:
+		quit(bye) #Print GoodBye Message And Exit The Program
 
-# elif(ch == 5):
-obj.update(3, 2)
-print(ls.__len__())
-print("List after updation")
-for i in range(ls.__len__()):
-    obj.display(ls[i])
+runAgain()		
+import os
+import platform
 
-# else:
-print("Thank You !") 
+global listStd #Making ListStd As Super Global Variable
+listStd = ["yugesh", "kishor", "gajen", "Gopi"] #List Of Students
+
+def manageStudent(): #Function For The Student Management System
+
+	x = "#" * 30
+	y = "=" * 28
+	global bye #Making Bye As Super Global Variable
+	bye = "\n {}\n# {} #\n# ===> Brought To You By <===  #\n# ===> code-projects.org <===  #\n# {} #\n {}".format(x, y, y, x) # Will Print GoodBye Message
+
+	#Printing Welcome Message And options For This Program
+	print(""" 
+
+  ------------------------------------------------------
+ |======================================================| 
+ |======== Welcome To Student Management System	========|
+ |======================================================|
+  ------------------------------------------------------
+
+Enter 1 : To View Student's List 
+Enter 2 : To Add New Student 
+Enter 3 : To Search Student 
+Enter 4 : To Remove Student 
+		
+		""")
+
+	try: #Using Exceptions For Validation
+		userInput = int(input("Please Select An Above Option: ")) #Will Take Input From User
+	except ValueError:
+		exit("\nHy! That's Not A Number") #Error Message
+	else:
+		print("\n") #Print New Line
+
+	#Checking Using Option	
+	if(userInput == 1): #This Option Will Print List Of Students
+		print("List Students\n")  
+		for students in listStd:
+			print("=> {}".format(students))
+
+	elif(userInput == 2): #This Option Will Add New Student In The List
+		newStd = input("Enter New Student: ")
+		if(newStd in listStd): #This Condition Checking The New Student Is Already In List Ur Not
+			print("\nThis Student {} Already In The Database".format(newStd))  #Error Message
+		else:	
+			listStd.append(newStd)
+			print("\n=> New Student {} Successfully Add \n".format(newStd))
+			for students in listStd:
+				print("=> {}".format(students))	
+
+	elif(userInput == 3): #This Option Will Search Student From The List
+		srcStd = input("Enter Student Name To Search: ")
+		if(srcStd in listStd): #This Condition Searching The Student
+			print("\n=> Record Found Of Student {}".format(srcStd))
+		else:
+			print("\n=> No Record Found Of Student {}".format(srcStd)) #Error Message
+
+	elif(userInput == 4): #This Option Will Remove Student From The List
+		rmStd = input("Enter Student Name To Remove: ")
+		if(rmStd in listStd): #This Condition Removing The Student From The List 
+			listStd.remove(rmStd)
+			print("\n=> Student {} Successfully Deleted \n".format(rmStd))
+			for students in listStd:
+				print("=> {}".format(students))
+		else:
+			print("\n=> No Record Found of This Student {}".format(rmStd)) #Error Message
+	 
+	elif(userInput < 1 or userInput > 4): #Validating User Option
+		print("Please Enter Valid Option")	#Error Message	
+						
+#brought to you by code-projects.org
+manageStudent()
+
+def runAgain(): #Making Runable Problem1353
+	runAgn = input("\nwant To Run Again Y/n: ")
+	if(runAgn.lower() == 'y'):
+		if(platform.system() == "Windows"): #Checking User OS For Clearing The Screen
+			print(os.system('cls')) 
+		else:
+			print(os.system('clear'))
+		manageStudent()
+		runAgain()
+	else:
+		quit(bye) #Print GoodBye Message And Exit The Program
+
+runAgain()		
